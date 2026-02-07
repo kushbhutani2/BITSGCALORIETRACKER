@@ -99,6 +99,14 @@ const weeklyMenu = {
 
 const DEFAULT_CAL = 150;
 
+// Return user-friendly unit for certain items (e.g., chutney uses tablespoon)
+function getUnitForItem(name) {
+    if (!name) return '';
+    const n = name.toLowerCase();
+    if (n.includes('chutney')) return 'tbsp';
+    return '';
+}
+
 // --- ROTATING HEALTH QUOTES ---
 const quotes = [
     "Drink at least 4 liters of water every day to stay hydrated.",
@@ -214,36 +222,29 @@ function init() {
         showLogin();
     }
 
-    // Theme initialization: default to dark if not set
-    const savedTheme = localStorage.getItem('theme') || 'dark';
+    // Theme initialization: default to light if not set
+    const savedTheme = localStorage.getItem('theme') || 'light';
     applyTheme(savedTheme);
 }
 
 // --- THEME FUNCTIONS ---
-const THEME_TRANSITION_MS = 380;
+const THEME_TRANSITION_MS = 360;
 function applyTheme(name) {
     const body = document.body;
     if (!body) return;
-    // add temporary switching class to ensure transitions apply smoothly
-    body.classList.add('theme-switching');
-
-    if (name === 'light') {
-        body.classList.remove('theme-dark');
-        body.classList.add('theme-light');
+    
+    if (name === 'dark') {
+        body.classList.add('theme-dark');
+        body.classList.remove('theme-light');
         const tbtn = document.getElementById('theme-toggle');
         if (tbtn) tbtn.innerText = '☀️';
     } else {
-        body.classList.remove('theme-light');
-        body.classList.add('theme-dark');
+        body.classList.remove('theme-dark');
+        body.classList.add('theme-light');
         const tbtn = document.getElementById('theme-toggle');
         if (tbtn) tbtn.innerText = '🌙';
     }
     localStorage.setItem('theme', name);
-
-    // remove switching class after transition finishes
-    setTimeout(() => {
-        body.classList.remove('theme-switching');
-    }, THEME_TRANSITION_MS);
 }
 
 function toggleTheme() {
@@ -533,18 +534,19 @@ function renderMenu() {
             const cal = typeof item === 'object' ? item.cal : (messCals[currentMess][name] || DEFAULT_CAL);
             const id = name.replace(/[^a-zA-Z0-9]/g, '');
             const qty = currentPlan[id] || 0;
+            const unit = getUnitForItem(name); // e.g. 'tbsp' for chutney
 
             const card = document.createElement('div');
             card.className = 'food-card';
             card.innerHTML = `
                 <div>
                     <div class="food-name">${name}</div>
-                    <div class="food-cal">${cal} kcal</div>
+                    <div class="food-cal">${cal} kcal${unit ? ' / ' + unit : ''}</div>
                 </div>
                 <div class="controls">
-                    <button class="btn-qty minus" onclick="updateQty('${id}', -1, ${cal})">-</button>
-                    <span class="quantity" id="qty-${id}">${qty}</span>
-                    <button class="btn-qty plus" onclick="updateQty('${id}', 1, ${cal})">+</button>
+                    <button class="btn-qty minus" onclick="updateQty('${id}', -0.5, ${cal})">−</button>
+                    <span class="quantity" id="qty-${id}" data-unit="${unit || ''}">${formatQty(qty)}${unit ? ' ' + unit : ''}</span>
+                    <button class="btn-qty plus" onclick="updateQty('${id}', 0.5, ${cal})">+</button>
                 </div>
             `;
             grid.appendChild(card);
@@ -560,14 +562,20 @@ function updateQty(id, change, cal) {
     else if (viewMode === 1) currentPlan = plans.today;
     else currentPlan = plans.tomorrow;
     
-    if (!currentPlan[id]) currentPlan[id] = 0;
-    if (currentPlan[id] + change < 0) return;
+    if (typeof currentPlan[id] === 'undefined') currentPlan[id] = 0;
+    change = parseFloat(change);
+    const newQty = +(currentPlan[id] + change);
+    if (newQty < 0) return;
 
-    currentPlan[id] += change;
-    
+    // Round to 1 decimal to avoid floating point artifacts
+    currentPlan[id] = Math.round(newQty * 10) / 10;
+
     // Update DOM directly
     const qtySpan = document.getElementById(`qty-${id}`);
-    if(qtySpan) qtySpan.innerText = currentPlan[id];
+    if (qtySpan) {
+        const unit = qtySpan.dataset.unit || '';
+        qtySpan.innerText = formatQty(currentPlan[id]) + (unit ? ' ' + unit : '');
+    }
     
     updateTotalDisplay();
     
@@ -602,6 +610,12 @@ function updateTotalDisplay() {
     });
 
     document.getElementById('grand-total').innerText = total;
+}
+
+function formatQty(n) {
+    if (Number.isInteger(n)) return n.toString();
+    // show one decimal place for halves
+    return n.toFixed(1).replace(/\.0$/, '');
 }
 
 // --- TIME AWARENESS ---

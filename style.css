@@ -4,7 +4,8 @@
 
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
-    background-color: #f4f7f6;
+    background-color: #ffffff;
+    color: #1a1a1a;
     margin: 0;
     padding: 0;
     -webkit-font-smoothing: antialiased;
@@ -261,7 +262,8 @@ h1 { margin: 0; font-size: 1.2rem; color: #ffffff; font-weight: 700; }
     box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
 }
 
-#grand-total { font-size: 1.6rem; color: #fff; font-weight: 700; }
+#grand-total { font-size: 1.6rem; color: inherit; font-weight: 700; }
+body.theme-light #grand-total { color: #0b1220; }
 
 /* Container */
 .container { max-width: 700px; margin: 0 auto; padding: 0 15px; }
@@ -341,7 +343,7 @@ h1 { margin: 0; font-size: 1.2rem; color: #ffffff; font-weight: 700; }
     border: none; 
     cursor: pointer;
     font-weight: bold;
-    font-size: 0.95rem;
+    font-size: 0.85rem;
     transition: all 0.2s;
 }
 
@@ -477,76 +479,184 @@ h1 { margin: 0; font-size: 1.2rem; color: #ffffff; font-weight: 700; }
     font-size: 1rem;
 }
 
-/* Theme: dark by default, light when body has .theme-light */
+/* ===== DAY MODE (Light Theme - Default) ===== */
+body.theme-light {
+    background-color: #ffffff;
+    color: #1a1a1a;
+}
+
+/* ===== NIGHT MODE (Dark Theme) ===== */
 body.theme-dark {
-    background-color: #071028; /* deep navy */
-    color: #e6f5ff;
+    background-color: #1a1a2e;
+    color: #e8e8e8;
 }
 
 body.theme-dark header {
-    background: linear-gradient(135deg, #0f1728 0%, #3a2a6a 50%, #60107a 100%);
+    background: linear-gradient(135deg, #2a2a4e 0%, #3d3d5c 100%);
+    color: #e8e8e8;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
 }
 
-body.theme-dark .login-box,
-body.theme-dark .modal-content,
-body.theme-dark .food-card {
-    background: linear-gradient(180deg, rgba(10,14,25,0.9), rgba(8,12,20,0.95));
-    color: #e6f5ff;
-    box-shadow: 0 8px 30px rgba(0,0,0,0.6);
+body.theme-dark header h1 { 
+    color: #ffffff; 
 }
 
-body.theme-dark .mess-badge {
-    background: linear-gradient(90deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
-    color: #d8ecff;
+body.theme-dark .day-toggle .toggle-btn { 
+    background: rgba(255, 255, 255, 0.15); 
+    color: #e8e8e8; 
+    border: 1px solid rgba(255, 255, 255, 0.25); 
+}
+
+body.theme-dark .day-toggle .toggle-btn.active { 
+    background: rgba(100, 200, 255, 0.3); 
+    color: #64c8ff; 
+    border-color: #64c8ff; 
+}
+
+body.theme-dark .header-actions button { 
+    background: rgba(255, 255, 255, 0.15); 
+    color: #e8e8e8; 
+    border: 1px solid rgba(255, 255, 255, 0.25); 
+}
+
+body.theme-dark .login-box, 
+body.theme-dark .modal-content, 
+body.theme-dark .food-card { 
+    background: #252540; 
+    color: #e8e8e8; 
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4); 
+    border: 1px solid #3a3a52;
+}
+
+body.theme-dark .mess-badge { 
+    background: rgba(100, 200, 255, 0.2); 
+    color: #64c8ff; 
 }
 
 body.theme-dark .section-title {
-    background: linear-gradient(135deg, #5b3ab7 0%, #8a3fb0 60%);
-    color: #fff7ff;
+    background: linear-gradient(135deg, #3a3a5c 0%, #4a4a7c 100%);
+    color: #e8e8e8;
 }
 
-body.theme-dark .live-banner {
-    background: linear-gradient(90deg, #7b61ff 0%, #ff6aa3 100%);
-    color: #081026;
+body.theme-dark .live-banner { 
+    background: linear-gradient(90deg, #3a5a8a 0%, #4a6aaa 100%); 
+    color: #e8e8e8; 
 }
 
-body.theme-dark .total-bar {
-    background: linear-gradient(90deg, #2b2d42 0%, #3a2a6a 100%);
-    color: #dbefff;
+body.theme-dark .total-bar { 
+    background: #252540; 
+    color: #64c8ff; 
+    border-bottom: 2px solid #64c8ff; 
 }
 
 body.theme-dark .food-card {
-    border-left-color: #ff6aa3;
+    border-left: 4px solid #64c8ff;
 }
 
 body.theme-dark .btn-qty {
-    background: linear-gradient(135deg, #7b61ff 0%, #ff6aa3 100%);
+    background: linear-gradient(135deg, #4a8aff 0%, #64c8ff 100%);
+    color: #1a1a2e;
+}
+
+body.theme-dark .quantity { color: #64c8ff; }
+body.theme-dark .food-name { color: #ffffff; }
+body.theme-dark .food-cal { color: #a8a8c8; }
+body.theme-dark #grand-total { color: #64c8ff; }
+body.theme-dark .date-title { color: #ffffff; }
+body.theme-dark .section-title { color: #e8e8e8; }
+
+body.theme-dark .quote-banner { 
+    background: linear-gradient(90deg, #2a4a6a 0%, #3a5a8a 100%); 
+    color: #64c8ff; 
+    border-left-color: #64c8ff; 
+}
+
+body.theme-dark .live-banner {
+    background: linear-gradient(90deg, #3a5a8a 0%, #4a6aaa 100%);
+    color: #e8e8e8;
+}
+
+/* Clean, Professional Light Theme (Day) */
+body.theme-light header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
+}
+
+body.theme-light header h1 { 
+    color: white; 
+}
+
+body.theme-light .day-toggle .toggle-btn { 
+    background: rgba(255, 255, 255, 0.2); 
+    color: white; 
+    border: 1px solid rgba(255, 255, 255, 0.3); 
+}
+
+body.theme-light .day-toggle .toggle-btn.active { 
+    background: rgba(255, 255, 255, 0.4); 
+    color: white; 
+    border-color: white; 
+}
+
+body.theme-light .header-actions button { 
+    background: rgba(255, 255, 255, 0.2); 
+    color: white; 
+    border: 1px solid rgba(255, 255, 255, 0.3); 
+}
+
+body.theme-light .login-box, 
+body.theme-light .modal-content, 
+body.theme-light .food-card { 
+    background: #ffffff; 
+    color: #1a1a1a; 
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); 
+    border: 1px solid #e0e0e0;
+}
+
+.mess-badge { 
+    background: rgba(255, 255, 255, 0.2); 
+    color: white; 
+}
+
+.section-title {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: white;
 }
 
-body.theme-dark .quantity { color: #e6f5ff; }
-
-body.theme-dark .quote-banner { background: linear-gradient(90deg,#0c1630 0%, #1b1738 60%, #2b1636 100%); color: #dbefff; border-left-color: #ff6aa3; }
-
-/* Light theme (explicit) */
-body.theme-light { background-color: #ffffff; color: #0b1220; }
-/* Make header and page white in light mode for full 'day' theme */
-body.theme-light header {
-    background: #ffffff;
-    color: #0b1220;
-    box-shadow: 0 1px 0 rgba(16,24,40,0.06);
+.live-banner { 
+    background: linear-gradient(90deg, #667eea 0%, #764ba2 100%); 
+    color: white; 
 }
-body.theme-light header h1 { color: #0b1220; }
-body.theme-light .day-toggle .toggle-btn { background: transparent; color: #0b1220; border: 1px solid rgba(16,24,40,0.06); }
-body.theme-light .day-toggle .toggle-btn.active { background: #f3f4f6; color: #0b1220; border-color: rgba(16,24,40,0.08); }
-body.theme-light .header-actions button { background: transparent; color: #0b1220; border: 1px solid rgba(16,24,40,0.04); }
-body.theme-light .login-box, body.theme-light .modal-content, body.theme-light .food-card { background: #ffffff; color: #0b1220; box-shadow: 0 6px 20px rgba(11,17,32,0.04); }
-body.theme-light .mess-badge { background: rgba(11,17,32,0.05); color: #0b1220; }
-body.theme-light .total-bar { background: #ffffff; color: #0b1220; border-bottom: 1px solid rgba(16,24,40,0.04); }
-body.theme-light .live-banner { background: linear-gradient(90deg,#fff1f7 0%, #f3f6ff 100%); color: #0b1220; }
+
+.total-bar { 
+    background: #f8f9fa; 
+    color: #1a1a1a; 
+    border-bottom: 2px solid #667eea; 
+}
+
+.food-card {
+    border-left: 4px solid #667eea;
+}
+
+body.theme-light .btn-qty {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+body.theme-light .quantity { color: #1a1a1a; }
+body.theme-light .food-name { color: #1a1a1a; }
+body.theme-light .food-cal { color: #666; }
+body.theme-light #grand-total { color: #667eea; }
+body.theme-light .date-title { color: #1a1a1a; }
+
+body.theme-light .quote-banner { 
+    background: linear-gradient(90deg, #667eea 0%, #764ba2 100%); 
+    color: white; 
+    border-left-color: #fff; 
+}
 
 /* Theme transition: smooth animated switch */
-/* Apply lightweight transitions to common themeable properties */
 header,
 .login-box,
 .modal-content,
@@ -560,7 +670,7 @@ header,
 .info-btn,
 .theme-toggle,
 body {
-    transition: background-color 360ms ease, color 360ms ease, box-shadow 360ms ease, border-color 360ms ease;
+    transition: background-color 300ms ease, color 300ms ease, box-shadow 300ms ease, border-color 300ms ease;
 }
 
 /* Respect reduced motion preference */
@@ -576,7 +686,6 @@ body {
     .btn-qty,
     .toggle-btn,
     .info-btn,
-    .theme-toggle,
     body {
         transition: none !important;
     }
@@ -634,12 +743,12 @@ body {
     }
 
     .header-left h1 {
-        font-size: 1.4rem;
+        font-size: 1.2rem;
     }
 
     .mess-badge {
-        font-size: 0.75rem;
-        padding: 4px 10px;
+        font-size: 0.7rem;
+        padding: 3px 8px;
     }
 
     .day-toggle {
@@ -671,14 +780,14 @@ body {
     }
 
     .menu-grid {
-        grid-template-columns: 1fr !important;
-        gap: 12px;
+        grid-template-columns: 1fr 1fr !important;
+        gap: 10px;
     }
 
     .food-card {
         flex-direction: column;
         text-align: center;
-        padding: 14px;
+        padding: 12px;
     }
 
     .food-card div:first-child {
@@ -692,8 +801,9 @@ body {
     }
 
     .btn-qty {
-        width: 40px;
-        height: 40px;
+        width: 36px;
+        height: 36px;
+        font-size: 0.85rem;
     }
 
     #live-banner {
@@ -877,11 +987,11 @@ body {
 
 @media (max-width: 480px) {
     .quote-banner {
-        padding: 8px 10px;
-        font-size: 0.95rem;
-        gap: 8px;
-        flex-direction: row;
+        padding: 4px 8px;
+        font-size: 0.7rem;
+        gap: 6px;
+        display: none;
     }
 
-    .quote-text { font-size: 0.9rem; }
+    .quote-text { font-size: 0.65rem; }
 }
