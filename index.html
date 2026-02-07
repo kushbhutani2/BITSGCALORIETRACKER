@@ -51,9 +51,10 @@
                 </div>
                 <div class="header-actions">
                     <button id="info-btn" class="info-btn" onclick="openQuantityInfoModal()" title="View quantity guidelines">ℹ️</button>
-                    <button id="theme-toggle" class="theme-toggle" onclick="toggleTheme()" title="Toggle theme">🌙</button>
-                    <button id="change-mess-btn" class="change-mess-btn" onclick="openChangeMessModal()">Change Mess</button>
-                    <button id="logout-btn" class="logout-btn" onclick="handleLogout()">Logout</button>
+                    <button id="settings-btn" class="settings-btn" onclick="openSettingsModal()" title="Settings">⚙️</button>
+                    <button id="theme-toggle" class="theme-toggle desktop-only" onclick="toggleTheme()" title="Toggle theme">🌙</button>
+                    <button id="change-mess-btn" class="change-mess-btn desktop-only" onclick="openChangeMessModal()">Change Mess</button>
+                    <button id="logout-btn" class="logout-btn desktop-only" onclick="handleLogout()">Logout</button>
                 </div>
             </div>
 
@@ -122,6 +123,50 @@
                 <button class="btn-primary" onclick="confirmChangeMess()">Confirm</button>
                 <button class="btn-secondary" onclick="closeChangeMessModal()">Cancel</button>
             </div>
+        </div>
+    </div>
+
+    <!-- SETTINGS MODAL -->
+    <div id="settings-modal" class="modal hidden">
+        <div class="modal-content settings-modal-content">
+            <h2>Settings</h2>
+            
+            <div class="settings-section">
+                <h3>👤 Account Info</h3>
+                <div class="info-item">
+                    <label>Email:</label>
+                    <p id="settings-email">Loading...</p>
+                </div>
+                <div class="info-item">
+                    <label>Mess:</label>
+                    <p id="settings-mess">Loading...</p>
+                </div>
+            </div>
+
+            <div class="settings-section">
+                <h3>🎨 Theme</h3>
+                <div class="theme-toggle-wrapper">
+                    <span>Dark Mode</span>
+                    <button id="settings-theme-toggle" class="theme-toggle-mobile" onclick="toggleTheme()" title="Toggle theme">🌙</button>
+                </div>
+            </div>
+
+            <div class="settings-section">
+                <h3>🏢 Mess</h3>
+                <select id="settings-mess-select">
+                    <option value="">-- Choose Mess --</option>
+                    <option value="A">A Mess</option>
+                    <option value="C">C Mess</option>
+                    <option value="D">D Mess</option>
+                </select>
+                <button class="btn-primary" style="width: 100%; margin-top: 10px;" onclick="confirmChangeMessFromSettings()">Change Mess</button>
+            </div>
+
+            <div class="settings-section">
+                <button class="btn-secondary" style="width: 100%;" onclick="handleLogout()">Logout</button>
+            </div>
+
+            <button class="btn-secondary" style="width: 100%; margin-top: 10px;" onclick="closeSettingsModal()">Close</button>
         </div>
     </div>
 

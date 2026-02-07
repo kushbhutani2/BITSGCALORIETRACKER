@@ -244,6 +244,11 @@ function applyTheme(name) {
         const tbtn = document.getElementById('theme-toggle');
         if (tbtn) tbtn.innerText = '🌙';
     }
+    // Also update settings button if modal is open
+    const settingsThemeBtn = document.getElementById('settings-theme-toggle');
+    if (settingsThemeBtn) {
+        settingsThemeBtn.innerText = name === 'dark' ? '☀️' : '🌙';
+    }
     localStorage.setItem('theme', name);
 }
 
@@ -370,6 +375,58 @@ function openQuantityInfoModal() {
 
 function closeQuantityInfoModal() {
     document.getElementById('quantity-info-modal').classList.add('hidden');
+}
+
+// --- SETTINGS MODAL FUNCTIONS ---
+function openSettingsModal() {
+    document.getElementById('settings-modal').classList.remove('hidden');
+    // Populate info
+    document.getElementById('settings-email').innerText = userEmail || 'Not logged in';
+    document.getElementById('settings-mess').innerText = currentMess + ' Mess';
+    document.getElementById('settings-mess-select').value = currentMess;
+    
+    // Update theme toggle icon
+    const themeBtn = document.getElementById('settings-theme-toggle');
+    if (themeBtn) {
+        themeBtn.innerText = document.body.classList.contains('theme-dark') ? '☀️' : '🌙';
+    }
+}
+
+function closeSettingsModal() {
+    document.getElementById('settings-modal').classList.add('hidden');
+}
+
+function confirmChangeMessFromSettings() {
+    const newMess = document.getElementById('settings-mess-select').value;
+    
+    if (!newMess) {
+        alert('Please select a mess');
+        return;
+    }
+    
+    if (newMess === currentMess) {
+        alert('You are already in ' + currentMess + ' Mess');
+        return;
+    }
+    
+    // Save current mess plans before switching
+    savePlans();
+    
+    // Update mess
+    currentMess = newMess;
+    localStorage.setItem('userMess', newMess);
+    document.getElementById('mess-badge').innerText = currentMess + ' Mess';
+    
+    // Load plans for the new mess (or start fresh if none exist)
+    loadPlans();
+    
+    // Re-render menu
+    renderMenu();
+    
+    // Update settings info
+    document.getElementById('settings-mess').innerText = currentMess + ' Mess';
+    
+    alert('Mess changed to ' + currentMess + ' Mess!');
 }
 
 // --- QUOTE ROTATION FUNCTIONS ---
