@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Smart Mess Tracker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- LOGIN PAGE -->
+    <div id="login-container" class="login-container">
+        <div class="login-box">
+            <h1>Mess Tracker</h1>
+            <p class="login-subtitle">Track your daily meal calories</p>
+            
+            <form id="login-form" onsubmit="handleLogin(event)">
+                <div class="form-group">
+                    <label for="email">BITS Goa Email ID</label>
+                    <input type="text" id="email" placeholder="your.email@goa.bits-pilani.ac.in" required autocomplete="email">
+                    <small class="form-hint">Must end with @goa.bits-pilani.ac.in</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="mess-select">Select Your Mess</label>
+                    <select id="mess-select" required>
+                        <option value="">-- Choose Mess --</option>
+                        <option value="A">A Mess</option>
+                        <option value="C">C Mess</option>
+                        <option value="D">D Mess</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="login-btn">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- MAIN APP -->
+    <div id="app-container" class="app-container hidden">
+        <header>
+            <div class="header-top">
+                <div class="header-left">
+                    <h1>Mess Tracker</h1>
+                    <span id="mess-badge" class="mess-badge">A Mess</span>
+                </div>
+                <div class="day-toggle">
+                    <button id="btn-yesterday" class="toggle-btn" onclick="switchDay(0)">Yesterday</button>
+                    <button id="btn-today" class="toggle-btn active" onclick="switchDay(1)">Today</button>
+                    <button id="btn-tmrw" class="toggle-btn" onclick="switchDay(2)">Tomorrow</button>
+                </div>
+                <div class="header-actions">
+                    <button id="info-btn" class="info-btn" onclick="openQuantityInfoModal()" title="View quantity guidelines">ℹ️</button>
+                    <button id="theme-toggle" class="theme-toggle" onclick="toggleTheme()" title="Toggle theme">🌙</button>
+                    <button id="change-mess-btn" class="change-mess-btn" onclick="openChangeMessModal()">Change Mess</button>
+                    <button id="logout-btn" class="logout-btn" onclick="handleLogout()">Logout</button>
+                </div>
+            </div>
+
+            <div id="live-banner" class="live-banner hidden">
+                <div class="live-icon">● LIVE</div>
+                <div class="live-info">
+                    <span id="live-meal-name">Lunch Time</span>
+                    <span id="live-calories">Planned: 0 kcal</span>
+                </div>
+            </div>
+
+            <div class="total-bar">
+                <span>Daily Total:</span>
+                <span id="grand-total">0</span>
+                <span class="unit">kcal</span>
+            </div>
+            <div id="quote-banner" class="quote-banner">
+                <div id="quote-text" class="quote-text">Drink 4 liters of water daily and include salads for fibre.</div>
+            </div>
+        </header>
+
+        <div class="container">
+            <h2 id="menu-date-title" class="date-title">Loading...</h2>
+            <div id="menu-container"></div>
+        </div>
+    </div>
+
+    <!-- QUANTITY INFO MODAL -->
+    <div id="quantity-info-modal" class="modal hidden">
+        <div class="modal-content info-modal-content">
+            <h2>📏 Serving Size Guide</h2>
+            <div class="quantity-guide">
+                <div class="guide-item">
+                    <h3>🥘 One Bowl</h3>
+                    <p><strong>For Vegetables (Sabzi):</strong><br>Approximately 200-250g | ~100-150 kcal</p>
+                    <p><strong>Half Bowl:</strong><br>Approximately 100-125g | ~50-75 kcal</p>
+                </div>
+                <div class="guide-item">
+                    <h3>🍚 One Plate</h3>
+                    <p><strong>For Rice:</strong><br>Standard plate (~150g cooked) | ~200 kcal</p>
+                </div>
+                <div class="guide-item">
+                    <h3>🍜 One Plate (Upma)</h3>
+                    <p><strong>Upma Serving:</strong><br>Standard plate (~200g) | ~250 kcal</p>
+                </div>
+                <div class="guide-item">
+                    <h3>🍰 Per Piece</h3>
+                    <p><strong>For Sweet Dishes:</strong><br>One standard piece/serving</p>
+                </div>
+            </div>
+            <button class="btn-primary" onclick="closeQuantityInfoModal()" style="width: 100%; margin-top: 20px;">Got it!</button>
+        </div>
+    </div>
+
+    <!-- CHANGE MESS MODAL -->
+    <div id="change-mess-modal" class="modal hidden">
+        <div class="modal-content">
+            <h2>Change Mess</h2>
+            <select id="new-mess-select">
+                <option value="">-- Choose Mess --</option>
+                <option value="A">A Mess</option>
+                <option value="C">C Mess</option>
+                <option value="D">D Mess</option>
+            </select>
+            <div class="modal-buttons">
+                <button class="btn-primary" onclick="confirmChangeMess()">Confirm</button>
+                <button class="btn-secondary" onclick="closeChangeMessModal()">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

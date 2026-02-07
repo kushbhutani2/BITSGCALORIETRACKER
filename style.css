@@ -1,0 +1,887 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+    background-color: #f4f7f6;
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* LOGIN PAGE STYLES */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.login-container.hidden {
+    display: none;
+}
+
+.login-box {
+    background: white;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+    width: 100%;
+    max-width: 400px;
+}
+
+.login-box h1 {
+    text-align: center;
+    color: #333;
+    margin: 0 0 10px 0;
+    font-size: 2rem;
+}
+
+.login-subtitle {
+    text-align: center;
+    color: #7f8c8d;
+    margin-bottom: 30px;
+    font-size: 0.95rem;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #333;
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #dfe6e9;
+    border-radius: 5px;
+    font-size: 1rem;
+    box-sizing: border-box;
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 5px rgba(102, 126, 234, 0.3);
+}
+
+.form-hint {
+    display: block;
+    font-size: 0.8rem;
+    color: #e74c3c;
+    margin-top: 4px;
+}
+
+.login-btn {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.login-btn:hover {
+    transform: translateY(-2px);
+}
+
+/* APP CONTAINER */
+.app-container {
+    padding-top: 140px;
+    padding-bottom: 50px;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    min-height: 100vh;
+}
+
+.app-container.hidden {
+    display: none;
+}
+
+header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    box-shadow: 0 8px 32px rgba(102, 126, 234, 0.3);
+    z-index: 100;
+}
+
+.header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    border-bottom: 1px solid #eee;
+    gap: 10px;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+h1 { margin: 0; font-size: 1.2rem; color: #ffffff; font-weight: 700; }
+
+.mess-badge {
+    background: rgba(255, 255, 255, 0.3);
+    color: white;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    backdrop-filter: blur(10px);
+}
+
+/* Day Toggle */
+.day-toggle {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 25px;
+    padding: 4px 6px;
+    display: flex;
+    backdrop-filter: blur(10px);
+}
+
+.toggle-btn {
+    border: none;
+    background: transparent;
+    padding: 8px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.toggle-btn:hover {
+    color: white;
+}
+
+.toggle-btn.active {
+    background: rgba(255, 255, 255, 0.3);
+    color: white;
+    font-weight: bold;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.logout-btn {
+    background: rgba(231, 76, 60, 0.8);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: bold;
+    transition: all 0.3s;
+}
+
+.logout-btn:hover {
+    background: #c0392b;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.change-mess-btn {
+    background: rgba(255, 255, 255, 0.25);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: bold;
+    transition: all 0.3s;
+    margin-right: 8px;
+}
+
+.change-mess-btn:hover {
+    background: rgba(255, 255, 255, 0.35);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.header-actions {
+    display: flex;
+    gap: 10px;
+}
+
+/* LIVE FLASH BANNER */
+.live-banner {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s ease;
+    box-shadow: inset 0 -2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.live-banner.hidden {
+    display: none;
+}
+
+.live-icon {
+    font-weight: bold;
+    font-size: 0.8rem;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1; }
+}
+
+.live-info { font-size: 0.95rem; }
+
+/* Total Bar */
+.total-bar {
+    padding: 15px 20px;
+    text-align: center;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    font-weight: bold;
+    color: white;
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+#grand-total { font-size: 1.6rem; color: #fff; font-weight: 700; }
+
+/* Container */
+.container { max-width: 700px; margin: 0 auto; padding: 0 15px; }
+
+.date-title {
+    font-size: 1.3rem;
+    color: #333;
+    text-align: center;
+    margin-bottom: 25px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.section-title {
+    font-size: 1.1rem;
+    color: #ffffff;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 12px 18px;
+    margin-bottom: 18px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-weight: 700;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
+}
+
+.menu-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+}
+@media (min-width: 500px) { .menu-grid { grid-template-columns: 1fr 1fr; } }
+
+.food-card {
+    background: white;
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center;
+    transition: all 0.3s ease;
+    border-left: 4px solid #667eea;
+}
+
+.food-card:hover {
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.15);
+    transform: translateY(-2px);
+}
+
+.food-name { 
+    font-weight: 700; 
+    font-size: 0.95rem; 
+    color: #2c3e50;
+}
+
+.food-cal { 
+    font-size: 0.85rem; 
+    color: #667eea;
+    font-weight: 600;
+}
+
+.controls {
+    display: flex; 
+    align-items: center; 
+    gap: 10px;
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); 
+    padding: 6px 10px; 
+    border-radius: 25px;
+}
+
+.btn-qty {
+    width: 32px; 
+    height: 32px; 
+    border-radius: 50%; 
+    border: none; 
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 0.95rem;
+    transition: all 0.2s;
+}
+
+.minus { 
+    background: rgba(255, 255, 255, 0.3);
+    color: white;
+} 
+
+.minus:hover {
+    background: rgba(255, 255, 255, 0.5);
+}
+
+.plus { 
+    background: rgba(255, 255, 255, 0.4); 
+    color: white;
+}
+
+.plus:hover {
+    background: rgba(255, 255, 255, 0.6);
+}
+
+.quantity { 
+    font-weight: bold; 
+    min-width: 20px; 
+    text-align: center; 
+    font-size: 0.95rem;
+    color: white;
+}
+
+/* MODAL STYLES */
+.modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 200;
+}
+
+.modal.hidden {
+    display: none;
+}
+
+.modal-content {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    max-width: 400px;
+}
+
+.modal-content h2 {
+    margin: 0 0 20px 0;
+    color: #333;
+}
+
+.modal-content select {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #dfe6e9;
+    border-radius: 5px;
+    font-size: 1rem;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+}
+
+.modal-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-primary {
+    flex: 1;
+    padding: 12px;
+    background: #667eea;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.btn-primary:hover {
+    background: #5568d3;
+}
+
+.btn-secondary {
+    flex: 1;
+    padding: 12px;
+    background: #dfe6e9;
+    color: #333;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.btn-secondary:hover {
+    background: #bdc3c7;
+}
+/* ==================== RESPONSIVE MOBILE DESIGN ==================== */
+
+.info-btn {
+    background: #e8f0ff;
+    color: #667eea;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: all 0.3s;
+}
+
+.info-btn:hover {
+    background: #d0e0ff;
+}
+
+/* Theme toggle button */
+.theme-toggle {
+    background: transparent;
+    border: 2px solid rgba(0,0,0,0.06);
+    color: inherit;
+    padding: 6px 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+/* Theme: dark by default, light when body has .theme-light */
+body.theme-dark {
+    background-color: #071028; /* deep navy */
+    color: #e6f5ff;
+}
+
+body.theme-dark header {
+    background: linear-gradient(135deg, #0f1728 0%, #3a2a6a 50%, #60107a 100%);
+}
+
+body.theme-dark .login-box,
+body.theme-dark .modal-content,
+body.theme-dark .food-card {
+    background: linear-gradient(180deg, rgba(10,14,25,0.9), rgba(8,12,20,0.95));
+    color: #e6f5ff;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.6);
+}
+
+body.theme-dark .mess-badge {
+    background: linear-gradient(90deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+    color: #d8ecff;
+}
+
+body.theme-dark .section-title {
+    background: linear-gradient(135deg, #5b3ab7 0%, #8a3fb0 60%);
+    color: #fff7ff;
+}
+
+body.theme-dark .live-banner {
+    background: linear-gradient(90deg, #7b61ff 0%, #ff6aa3 100%);
+    color: #081026;
+}
+
+body.theme-dark .total-bar {
+    background: linear-gradient(90deg, #2b2d42 0%, #3a2a6a 100%);
+    color: #dbefff;
+}
+
+body.theme-dark .food-card {
+    border-left-color: #ff6aa3;
+}
+
+body.theme-dark .btn-qty {
+    background: linear-gradient(135deg, #7b61ff 0%, #ff6aa3 100%);
+    color: white;
+}
+
+body.theme-dark .quantity { color: #e6f5ff; }
+
+body.theme-dark .quote-banner { background: linear-gradient(90deg,#0c1630 0%, #1b1738 60%, #2b1636 100%); color: #dbefff; border-left-color: #ff6aa3; }
+
+/* Light theme (explicit) */
+body.theme-light { background-color: #ffffff; color: #0b1220; }
+/* Make header and page white in light mode for full 'day' theme */
+body.theme-light header {
+    background: #ffffff;
+    color: #0b1220;
+    box-shadow: 0 1px 0 rgba(16,24,40,0.06);
+}
+body.theme-light header h1 { color: #0b1220; }
+body.theme-light .day-toggle .toggle-btn { background: transparent; color: #0b1220; border: 1px solid rgba(16,24,40,0.06); }
+body.theme-light .day-toggle .toggle-btn.active { background: #f3f4f6; color: #0b1220; border-color: rgba(16,24,40,0.08); }
+body.theme-light .header-actions button { background: transparent; color: #0b1220; border: 1px solid rgba(16,24,40,0.04); }
+body.theme-light .login-box, body.theme-light .modal-content, body.theme-light .food-card { background: #ffffff; color: #0b1220; box-shadow: 0 6px 20px rgba(11,17,32,0.04); }
+body.theme-light .mess-badge { background: rgba(11,17,32,0.05); color: #0b1220; }
+body.theme-light .total-bar { background: #ffffff; color: #0b1220; border-bottom: 1px solid rgba(16,24,40,0.04); }
+body.theme-light .live-banner { background: linear-gradient(90deg,#fff1f7 0%, #f3f6ff 100%); color: #0b1220; }
+
+/* Theme transition: smooth animated switch */
+/* Apply lightweight transitions to common themeable properties */
+header,
+.login-box,
+.modal-content,
+.food-card,
+.total-bar,
+.live-banner,
+.quote-banner,
+.mess-badge,
+.btn-qty,
+.toggle-btn,
+.info-btn,
+.theme-toggle,
+body {
+    transition: background-color 360ms ease, color 360ms ease, box-shadow 360ms ease, border-color 360ms ease;
+}
+
+/* Respect reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+    header,
+    .login-box,
+    .modal-content,
+    .food-card,
+    .total-bar,
+    .live-banner,
+    .quote-banner,
+    .mess-badge,
+    .btn-qty,
+    .toggle-btn,
+    .info-btn,
+    .theme-toggle,
+    body {
+        transition: none !important;
+    }
+}
+
+
+.info-modal-content {
+    max-width: 600px;
+    max-height: 85vh;
+    overflow-y: auto;
+}
+
+.quantity-guide {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    margin: 20px 0;
+}
+
+.guide-item {
+    background: #f8f9fa;
+    padding: 16px;
+    border-radius: 8px;
+    border-left: 4px solid #667eea;
+}
+
+.guide-item h3 {
+    margin: 0 0 12px 0;
+    color: #333;
+    font-size: 1.1rem;
+}
+
+.guide-item p {
+    margin: 8px 0;
+    color: #666;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+/* RESPONSIVE MEDIA QUERIES */
+
+@media (max-width: 480px) {
+    .login-box {
+        padding: 25px 20px;
+        border-radius: 12px;
+    }
+
+    .login-box h1 {
+        font-size: 2rem;
+    }
+
+    .form-group input,
+    .form-group select {
+        font-size: 16px;
+    }
+
+    .header-left h1 {
+        font-size: 1.4rem;
+    }
+
+    .mess-badge {
+        font-size: 0.75rem;
+        padding: 4px 10px;
+    }
+
+    .day-toggle {
+        width: 100%;
+        order: 3;
+        gap: 6px;
+    }
+
+    .toggle-btn {
+        flex: 1;
+        padding: 6px 10px;
+        font-size: 0.8rem;
+        min-width: 0;
+    }
+
+    .header-actions {
+        gap: 6px;
+    }
+
+    .info-btn,
+    .change-mess-btn,
+    .logout-btn {
+        padding: 6px 10px;
+        font-size: 0.85rem;
+    }
+
+    .info-btn {
+        font-size: 1rem;
+    }
+
+    .menu-grid {
+        grid-template-columns: 1fr !important;
+        gap: 12px;
+    }
+
+    .food-card {
+        flex-direction: column;
+        text-align: center;
+        padding: 14px;
+    }
+
+    .food-card div:first-child {
+        width: 100%;
+        margin-bottom: 12px;
+    }
+
+    .controls {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .btn-qty {
+        width: 40px;
+        height: 40px;
+    }
+
+    #live-banner {
+        flex-direction: column;
+        padding: 10px 15px;
+    }
+
+    .total-bar {
+        padding: 10px 15px;
+        font-size: 0.95rem;
+    }
+
+    #grand-total {
+        font-size: 1.3rem;
+    }
+
+    .section-title {
+        font-size: 1.1rem;
+        margin: 20px 0 12px;
+    }
+
+    .date-title {
+        font-size: 1.2rem;
+        margin: 20px 0 15px;
+    }
+
+    .container {
+        padding: 0 12px;
+    }
+
+    .modal-content {
+        padding: 20px;
+        border-radius: 10px;
+        width: 95%;
+    }
+
+    .modal-content h2 {
+        font-size: 1.3rem;
+        margin-bottom: 18px;
+    }
+
+    .quantity-guide {
+        grid-template-columns: 1fr;
+    }
+
+    .guide-item {
+        padding: 12px;
+    }
+
+    .guide-item h3 {
+        font-size: 1rem;
+    }
+
+    .guide-item p {
+        font-size: 0.9rem;
+    }
+}
+
+@media (min-width: 481px) and (max-width: 600px) {
+    .menu-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)) !important;
+    }
+
+    .header-left h1 {
+        font-size: 1.6rem;
+    }
+}
+
+@media (min-width: 768px) {
+    .header-top {
+        padding: 18px 30px;
+    }
+
+    .header-left h1 {
+        font-size: 2rem;
+    }
+
+    .menu-grid {
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)) !important;
+    }
+
+    .food-card {
+        padding: 18px;
+        flex-direction: row;
+        text-align: left;
+    }
+
+    .food-card div:first-child {
+        width: auto;
+        margin-bottom: 0;
+    }
+
+    .container {
+        padding: 0 30px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .menu-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 16px;
+    }
+
+    .header-left h1 {
+        font-size: 1.8rem;
+    }
+}
+
+@media (min-width: 1200px) {
+    .menu-grid {
+        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)) !important;
+    }
+
+    .header-top {
+        padding: 20px 40px;
+    }
+
+    .container {
+        padding: 0 40px;
+        max-width: 1200px;
+    }
+}
+
+@media (max-height: 600px) {
+    .app-container {
+        padding-top: 140px;
+    }
+}
+
+@media (hover: none) and (pointer: coarse) {
+    .btn-qty {
+        min-height: 44px;
+        min-width: 44px;
+    }
+
+    .toggle-btn,
+    .info-btn,
+    .change-mess-btn,
+    .logout-btn {
+        min-height: 44px;
+        padding: 10px 14px;
+    }
+
+    .food-card {
+        padding: 18px;
+    }
+
+    .food-card:hover {
+        transform: none;
+    }
+}
+
+@media print {
+    .header-actions,
+    .live-banner,
+    .total-bar {
+        display: none;
+    }
+
+    .food-card {
+        page-break-inside: avoid;
+    }
+}
+
+/* Quote Banner */
+.quote-banner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    background: linear-gradient(90deg, #fff9e6 0%, #fff3d1 100%);
+    color: #333;
+    padding: 10px 16px;
+    border-left: 4px solid #f5b041;
+}
+
+.quote-text {
+    font-size: 0.95rem;
+    font-weight: 600;
+}
+
+@media (max-width: 480px) {
+    .quote-banner {
+        padding: 8px 10px;
+        font-size: 0.95rem;
+        gap: 8px;
+        flex-direction: row;
+    }
+
+    .quote-text { font-size: 0.9rem; }
+}
