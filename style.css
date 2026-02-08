@@ -5,7 +5,7 @@
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
     background-color: #ffffff;
-    color: #1a1a1a;
+    color: #0c2340;
     margin: 0;
     padding: 0;
     -webkit-font-smoothing: antialiased;
@@ -18,7 +18,7 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #059669 0%, #047857 100%);
 }
 
 .login-container.hidden {
@@ -92,21 +92,21 @@ body {
 .form-group input:focus,
 .form-group select:focus {
     outline: none;
-    border-color: #4f46e5;
-    box-shadow: 0 0 5px rgba(79, 70, 229, 0.3);
+    border-color: #0891b2;
+    box-shadow: 0 0 6px rgba(8, 145, 178, 0.25);
 }
 
 .form-hint {
     display: block;
     font-size: 0.8rem;
-    color: #e74c3c;
+    color: #0891b2;
     margin-top: 4px;
 }
 
 .login-btn {
     width: 100%;
     padding: 12px;
-    background: linear-gradient(135deg, #4f46e5 0%, #6d28d9 100%);
+    background: linear-gradient(135deg, #059669 0%, #047857 100%);
     color: white;
     border: none;
     border-radius: 5px;
@@ -133,7 +133,7 @@ body {
 }
 
 header {
-    background: linear-gradient(135deg, #4f46e5 0%, #6d28d9 100%);
+    background: linear-gradient(135deg, #059669 0%, #047857 100%);
     position: fixed;
     top: 0;
     width: 100%;
@@ -242,8 +242,8 @@ h1 { margin: 0; font-size: 1.2rem; color: #ffffff; font-weight: 700; }
 
 /* LIVE FLASH BANNER */
 .live-banner {
-    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-    color: white;
+    background: linear-gradient(135deg, #e6f7fb 0%, #dff5fb 100%);
+    color: #0c2340;
     padding: 15px 20px;
     display: flex;
     justify-content: space-between;
@@ -274,7 +274,7 @@ h1 { margin: 0; font-size: 1.2rem; color: #ffffff; font-weight: 700; }
 .total-bar {
     padding: 15px 20px;
     text-align: center;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #059669 0%, #047857 100%);
     font-weight: bold;
     color: white;
     box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
@@ -299,7 +299,7 @@ body.theme-light #grand-total { color: #0b1220; }
 .section-title {
     font-size: 1.1rem;
     color: #ffffff;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #059669 0%, #047857 100%);
     padding: 12px 18px;
     margin-bottom: 18px;
     text-transform: uppercase;
@@ -325,7 +325,7 @@ body.theme-light #grand-total { color: #0b1220; }
     justify-content: space-between; 
     align-items: center;
     transition: all 0.3s ease;
-    border-left: 4px solid #667eea;
+    border-left: 4px solid #059669;
 }
 
 .food-card:hover {
@@ -341,7 +341,7 @@ body.theme-light #grand-total { color: #0b1220; }
 
 .food-cal { 
     font-size: 0.85rem; 
-    color: #667eea;
+    color: #059669;
     font-weight: 600;
 }
 
@@ -349,7 +349,7 @@ body.theme-light #grand-total { color: #0b1220; }
     display: flex; 
     align-items: center; 
     gap: 10px;
-    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); 
+    background: linear-gradient(135deg, #e6f7fb 0%, #dff5fb 100%); 
     padding: 6px 10px; 
     border-radius: 25px;
 }
@@ -427,6 +427,14 @@ body.theme-light #grand-total { color: #0b1220; }
     width: 100%;
     padding: 12px;
     border: 2px solid #dfe6e9;
+
+/* Ensure close button is visible on all devices inside modals */
+.modal .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 12px;
+    z-index: 210;
+}
     border-radius: 5px;
     font-size: 1rem;
     box-sizing: border-box;
@@ -441,7 +449,7 @@ body.theme-light #grand-total { color: #0b1220; }
 .btn-primary {
     flex: 1;
     padding: 12px;
-    background: #667eea;
+    background: #059669;
     color: white;
     border: none;
     border-radius: 5px;
@@ -473,7 +481,7 @@ body.theme-light #grand-total { color: #0b1220; }
 
 .info-btn {
     background: #e8f0ff;
-    color: #667eea;
+    color: #059669;
     border: none;
     padding: 8px 12px;
     border-radius: 6px;
@@ -488,7 +496,7 @@ body.theme-light #grand-total { color: #0b1220; }
 
 .settings-btn {
     background: #e8f0ff;
-    color: #667eea;
+    color: #059669;
     border: none;
     padding: 8px 12px;
     border-radius: 6px;
@@ -526,17 +534,16 @@ body.theme-light #grand-total { color: #0b1220; }
 /* ===== DAY MODE (Light Theme - Default) ===== */
 body.theme-light {
     background-color: #ffffff;
-    color: #1a1a1a;
+    color: #0c2340;
 }
 
 /* ===== NIGHT MODE (Dark Theme) ===== */
 body.theme-dark {
     background-color: #0f172a;
-    color: #e8ecf1;
+    color: #f3f4f6;
 }
 
-body.theme-dark header {
-    background: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%);
+body.theme-dark header { background: linear-gradient(135deg, #065f46 0%, #047857 100%);
     color: #f8fafc;
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
 }
@@ -547,10 +554,10 @@ body.theme-dark header h1 {
 }
 
 body.theme-dark .food-card {
-    background: #1a1f3a;
-    border: 1px solid #2d3a5f;
-    border-left: 3px solid #6366f1;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+    background: #1e293b;
+    border: 1px solid #334155;
+    border-left: 3px solid #818cf8;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
 }
 
 body.theme-dark .food-name {
@@ -558,17 +565,17 @@ body.theme-dark .food-name {
     font-weight: 700;
 }
 
-body.theme-dark .food-cal {
-    color: #cbd5e1;
+body.theme-dark .food-cal { color: #06b6d4;
+    font-weight: 500;
 }
 
 body.theme-dark .quantity {
-    color: #a5b4fc;
+    color: #c7d2fe;
     font-weight: 700;
 }
 
 body.theme-dark .btn-qty {
-    background: linear-gradient(135deg, #4f46e5 0%, #6d28d9 100%);
+    background: linear-gradient(135deg, #059669 0%, #047857 100%);
     color: #ffffff;
     user-select: none;
     -webkit-user-select: none;
@@ -588,13 +595,14 @@ body.theme-dark .total-bar {
 }
 
 body.theme-dark #grand-total {
-    color: #a5b4fc;
+    color: #c7d2fe;
     font-weight: 700;
+    font-size: 1.2rem;
 }
 
 body.theme-dark .date-title {
     color: #f1f5f9;
-    font-weight: 600;
+    font-weight: 700;
 }
 
 body.theme-dark .quote-banner {
@@ -614,9 +622,28 @@ body.theme-dark .live-banner {
     color: #f1f5f9;
 }
 
-/* Clean, Professional Light Theme (Day) */
+body.theme-dark .total-bar {
+    background: #1e293b;
+    color: #f1f5f9;
+    border-bottom: 3px solid #818cf8;
+    font-weight: 700;
+}
+
+body.theme-dark .target-bar {
+    background: linear-gradient(90deg, rgba(99,102,241,0.15), rgba(129,140,248,0.1));
+    color: #f1f5f9;
+    border-bottom: 2px solid #334155;
+}
+
+body.theme-dark .target-bar .unit { color: #cbd5e1; }
+body.theme-dark .target-bar #target-remaining { color: #e0e7ff; }
+
+body.theme-light {
+    background: #ffffff;
+    color: #0c2340;
+}
 body.theme-light header {
-    background: linear-gradient(135deg, #4f46e5 0%, #6d28d9 100%);
+    background: linear-gradient(135deg, #059669 0%, #047857 100%);
     color: white;
     box-shadow: 0 4px 12px rgba(79, 70, 229, 0.2);
 }
@@ -647,9 +674,9 @@ body.theme-light .login-box,
 body.theme-light .modal-content, 
 body.theme-light .food-card { 
     background: #ffffff; 
-    color: #1a1a1a; 
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); 
-    border: 1px solid #e0e0e0;
+    color: #0c2340; 
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12); 
+    border: 1px solid #d1d5db;
 }
 
 .mess-badge { 
@@ -658,40 +685,43 @@ body.theme-light .food-card {
 }
 
 .section-title {
-    background: linear-gradient(135deg, #4f46e5 0%, #6d28d9 100%);
+    background: linear-gradient(135deg, #059669 0%, #047857 100%);
     color: white;
 }
 
 .live-banner { 
-    background: linear-gradient(90deg, #4f46e5 0%, #6d28d9 100%); 
+    background: linear-gradient(90deg, #059669 0%, #047857 100%); 
     color: white; 
 }
 
 .total-bar { 
-    background: #f8f9fa; 
-    color: #1a1a1a; 
-    border-bottom: 2px solid #4f46e5; 
+    background: #ffffff; 
+    color: #0c2340; 
+    border-bottom: 3px solid #059669;
+    font-weight: 700;
+    font-size: 1rem;
 }
 
 .target-bar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 8px 18px;
-    background: linear-gradient(90deg, rgba(79,70,229,0.06), rgba(109,40,217,0.04));
-    color: #111827;
-    font-weight: 600;
-    font-size: 0.95rem;
+    padding: 10px 18px;
+    background: linear-gradient(90deg, rgba(79,70,229,0.08), rgba(109,40,217,0.05));
+    color: #0c2340;
+    font-weight: 700;
+    font-size: 0.98rem;
+    border-bottom: 2px solid #e5e7eb;
 }
-.target-bar .unit { margin-left: 6px; color: #6b7280; font-weight: 500; }
-.target-bar #target-remaining { color: #374151; font-weight: 700; }
+.target-bar .unit { margin-left: 6px; color: #4b5563; font-weight: 600; }
+.target-bar #target-remaining { color: #0c2340; font-weight: 700; }
 
 .food-card {
-    border-left: 4px solid #4f46e5;
+    border-left: 4px solid #059669;
 }
 
 body.theme-light .btn-qty {
-    background: linear-gradient(135deg, #4f46e5 0%, #6d28d9 100%);
+    background: linear-gradient(135deg, #059669 0%, #047857 100%);
     color: white;
     user-select: none;
     -webkit-user-select: none;
@@ -699,14 +729,14 @@ body.theme-light .btn-qty {
     -ms-user-select: none;
 }
 
-body.theme-light .quantity { color: #1a1a1a; }
-body.theme-light .food-name { color: #1a1a1a; }
-body.theme-light .food-cal { color: #666; }
-body.theme-light #grand-total { color: #4f46e5; font-weight: 700; }
-body.theme-light .date-title { color: #1a1a1a; }
+body.theme-light .quantity { color: #0c2340; font-weight: 700; }
+body.theme-light .food-name { color: #0c2340; font-weight: 700; }
+body.theme-light .food-cal { color: #06b6d4; font-weight: 500; }
+body.theme-light #grand-total { color: #059669; font-weight: 700; font-size: 1.2rem; }
+body.theme-light .date-title { color: #0c2340; font-weight: 700; }
 
 body.theme-light .quote-banner { 
-    background: linear-gradient(90deg, #4f46e5 0%, #6d28d9 100%); 
+    background: linear-gradient(90deg, #059669 0%, #047857 100%); 
     color: white; 
     border-left-color: #fff; 
 }
@@ -758,6 +788,38 @@ body {
     padding: 24px;
 }
 
+.settings-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #e5e7eb;
+}
+
+.settings-header h2 {
+    margin: 0;
+    font-size: 1.25rem;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 1.8rem;
+    cursor: pointer;
+    padding: 0 8px;
+    color: #059669;
+    transition: color 0.2s, transform 0.2s;
+    font-weight: bold;
+}
+
+.close-btn:hover {
+    color: #047857;
+    transform: scale(1.15);
+}
+
+/* Day navigation in settings removed; main day-toggle remains in header */
+
 .settings-section {
     margin-bottom: 20px;
     padding-bottom: 16px;
@@ -800,7 +862,7 @@ body {
 }
 
 .theme-toggle-mobile {
-    background: #667eea;
+    background: #059669;
     color: white;
     border: none;
     padding: 8px 16px;
@@ -811,7 +873,7 @@ body {
 }
 
 .theme-toggle-mobile:hover {
-    background: #764ba2;
+    background: #047857;
 }
 
 .settings-modal-content select {
@@ -854,7 +916,7 @@ body.theme-dark .settings-modal-content select {
     background: #f8f9fa;
     padding: 16px;
     border-radius: 8px;
-    border-left: 4px solid #667eea;
+    border-left: 4px solid #059669;
 }
 
 .guide-item h3 {
@@ -873,7 +935,30 @@ body.theme-dark .settings-modal-content select {
 /* RESPONSIVE MEDIA QUERIES */
 
 @media (max-width: 480px) {
-    .day-toggle { display: none; }
+    .day-toggle {
+        display: flex;
+        gap: 6px;
+        justify-content: center;
+        align-items: center;
+        background: #f3f4f6;
+        padding: 6px;
+        border-radius: 8px;
+        margin: 8px 6px;
+    }
+    .day-toggle .toggle-btn {
+        padding: 6px 10px;
+        background: transparent;
+        color: #0c2340;
+        border: 1px solid #e5e7eb;
+        border-radius: 6px;
+        font-size: 0.82rem;
+        font-weight: 700;
+    }
+    .day-toggle .toggle-btn.active {
+        background: #e6f7fb; /* light blue highlight */
+        border-color: #bfedf6;
+        color: #0891b2;
+    }
     .login-box { padding: 20px; }
     .login-box h1 { font-size: 1.6rem; }
     .form-group input, .form-group select { font-size: 16px; }
@@ -881,6 +966,9 @@ body.theme-dark .settings-modal-content select {
     header { padding-top: 6px !important; padding-bottom: 4px !important; }
     .header-left h1 { font-size: 0.95rem; margin: 0; font-weight: 700; }
     .mess-badge { font-size: 0.58rem; padding: 1px 4px; }
+    .header-top { flex-wrap: wrap; align-items: center; }
+    .day-toggle { order: 3; }
+    .header-actions { order: 2; }
     
     .header-actions { gap: 2px; }
     .info-btn, .settings-btn, .change-mess-btn, .logout-btn { 
@@ -1029,10 +1117,10 @@ body.theme-dark .settings-modal-content select {
     align-items: center;
     justify-content: space-between;
     gap: 12px;
-    background: linear-gradient(90deg, #fff9e6 0%, #fff3d1 100%);
-    color: #333;
+    background: linear-gradient(90deg, #e6f7fb 0%, #dff5fb 100%);
+    color: #0c2340;
     padding: 10px 16px;
-    border-left: 4px solid #f5b041;
+    border-left: 4px solid #0891b2;
 }
 
 .quote-text {
@@ -1050,3 +1138,17 @@ body.theme-dark .settings-modal-content select {
 
     .quote-text { font-size: 0.65rem; }
 }
+
+
+
+
+
+body.theme-dark .close-btn {
+    color: #06b6d4;
+}
+
+body.theme-dark .close-btn:hover {
+    color: #0891b2;
+    transform: scale(1.15);
+}
+

@@ -285,12 +285,15 @@ function handleLogin(event) {
     
     const emailInput = document.getElementById('email');
     const messSelect = document.getElementById('mess-select');
+    const calorieTargetInput = document.getElementById('calorie-target');
     
     const email = emailInput.value.trim().toLowerCase();
     const mess = messSelect.value;
+    const calorieTarget = calorieTargetInput.value.trim();
     
     console.log('Email entered:', email);
     console.log('Mess selected:', mess);
+    console.log('Calorie target:', calorieTarget);
     
     // Step 1: Check if email is not empty
     if (!email || email.length === 0) {
@@ -322,17 +325,30 @@ function handleLogin(event) {
         return;
     }
     
+    // Step 5: Validate and save calorie target
+    let targetValue = 2000; // default
+    if (calorieTarget && calorieTarget.length > 0) {
+        const target = parseInt(calorieTarget, 10);
+        if (!Number.isFinite(target) || target < 0) {
+            alert('❌ Please enter a valid calorie target (0 or higher)');
+            calorieTargetInput.focus();
+            return;
+        }
+        targetValue = target;
+    }
+    
     console.log('✓ All validations passed. Logging in...');
     
     // All checks passed - save and login
     localStorage.setItem('userEmail', email);
     localStorage.setItem('userMess', mess);
+    localStorage.setItem('dailyTarget', String(targetValue));
     localStorage.setItem('lastLoginDate', new Date().toDateString());
     
     userEmail = email;
     currentMess = mess;
     
-    console.log('✓ Login successful! Email:', userEmail, 'Mess:', currentMess);
+    console.log('✓ Login successful! Email:', userEmail, 'Mess:', currentMess, 'Target:', targetValue);
     
     showApp();
 }
@@ -425,6 +441,8 @@ function saveDailyTargetFromSettings() {
     alert('Daily target saved');
     // Refresh display
     updateTargetDisplay();
+    // Close settings modal after saving
+    closeSettingsModal();
 }
 
 function updateTargetDisplay() {
@@ -477,6 +495,8 @@ function confirmChangeMessFromSettings() {
     document.getElementById('settings-mess').innerText = currentMess + ' Mess';
     
     alert('Mess changed to ' + currentMess + ' Mess!');
+    // Close settings modal to return to main UI
+    closeSettingsModal();
 }
 
 // --- QUOTE ROTATION FUNCTIONS ---
@@ -519,6 +539,18 @@ function startQuoteRotation() {
         updateQuoteDisplay();
     }, QUOTE_INTERVAL_MS);
 }
+
+// Close modal on Escape key
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+        const settings = document.getElementById('settings-modal');
+        if (settings && !settings.classList.contains('hidden')) closeSettingsModal();
+        const change = document.getElementById('change-mess-modal');
+        if (change && !change.classList.contains('hidden')) closeChangeMessModal();
+        const info = document.getElementById('quantity-info-modal');
+        if (info && !info.classList.contains('hidden')) closeQuantityInfoModal();
+    }
+});
 
 function dismissQuote() {
     // removed
@@ -584,11 +616,12 @@ function loadPlans() {
 function switchDay(mode) {
     viewMode = mode;
     
-    // Toggle Button Styles
+    // Toggle Button Styles (header)
     document.getElementById('btn-yesterday').classList.toggle('active', mode === 0);
     document.getElementById('btn-today').classList.toggle('active', mode === 1);
     document.getElementById('btn-tmrw').classList.toggle('active', mode === 2);
     
+    // (mobile settings day-nav removed) - no mobile button sync needed
     renderMenu();
 }
 
