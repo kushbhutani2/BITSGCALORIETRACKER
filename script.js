@@ -390,10 +390,60 @@ function openSettingsModal() {
     if (themeBtn) {
         themeBtn.innerText = document.body.classList.contains('theme-dark') ? '☀️' : '🌙';
     }
+    // Populate daily target input
+    const targetInput = document.getElementById('settings-daily-target');
+    if (targetInput) targetInput.value = getDailyTarget();
 }
 
 function closeSettingsModal() {
     document.getElementById('settings-modal').classList.add('hidden');
+}
+
+// --- DAILY TARGET FUNCTIONS ---
+function getDailyTarget() {
+    const t = parseInt(localStorage.getItem('dailyTarget') || '2000', 10);
+    return Number.isFinite(t) ? t : 2000;
+}
+
+function setDailyTarget(val) {
+    const n = parseInt(val, 10);
+    if (!Number.isFinite(n) || n < 0) return false;
+    localStorage.setItem('dailyTarget', String(n));
+    return true;
+}
+
+function saveDailyTargetFromSettings() {
+    const input = document.getElementById('settings-daily-target');
+    if (!input) return;
+    const v = input.value.trim();
+    if (v.length === 0) {
+        alert('Please enter a target value (kcal)');
+        return;
+    }
+    const ok = setDailyTarget(v);
+    if (!ok) { alert('Invalid value'); return; }
+    alert('Daily target saved');
+    // Refresh display
+    updateTargetDisplay();
+}
+
+function updateTargetDisplay() {
+    const targetEl = document.getElementById('daily-target');
+    const remEl = document.getElementById('target-remaining');
+    if (!targetEl || !remEl) return;
+
+    const target = getDailyTarget();
+    const total = parseInt(document.getElementById('grand-total').innerText || '0', 10);
+    targetEl.innerText = target;
+
+    if (viewMode === 2) {
+        // Tomorrow: show planned for next day and the target
+        remEl.innerText = `Next day planned: ${total} kcal • Target: ${target} kcal`;
+    } else {
+        const remaining = target - total;
+        if (remaining >= 0) remEl.innerText = `Remaining: ${remaining} kcal`;
+        else remEl.innerText = `Over by: ${Math.abs(remaining)} kcal`;
+    }
 }
 
 function confirmChangeMessFromSettings() {
@@ -667,6 +717,8 @@ function updateTotalDisplay() {
     });
 
     document.getElementById('grand-total').innerText = total;
+    // Update target display (remaining / next-day planned)
+    updateTargetDisplay();
 }
 
 function formatQty(n) {

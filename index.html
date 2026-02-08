@@ -71,6 +71,14 @@
                 <span id="grand-total">0</span>
                 <span class="unit">kcal</span>
             </div>
+            <div id="target-bar" class="target-bar">
+                <div>
+                    <span>Target:</span>
+                    <span id="daily-target">2000</span>
+                    <span class="unit">kcal</span>
+                </div>
+                <div id="target-remaining">Remaining: 2000 kcal</div>
+            </div>
             <div id="quote-banner" class="quote-banner">
                 <div id="quote-text" class="quote-text">Drink 4 liters of water daily and include salads for fibre.</div>
             </div>
@@ -149,6 +157,15 @@
                     <span>Dark Mode</span>
                     <button id="settings-theme-toggle" class="theme-toggle-mobile" onclick="toggleTheme()" title="Toggle theme">🌙</button>
                 </div>
+            </div>
+
+            <div class="settings-section">
+                <h3>🎯 Daily Target</h3>
+                <div class="info-item">
+                    <label for="settings-daily-target">Daily Calorie Target (kcal)</label>
+                    <input id="settings-daily-target" type="number" min="0" placeholder="e.g. 2000" />
+                </div>
+                <button class="btn-primary" style="width: 100%; margin-top: 10px;" onclick="saveDailyTargetFromSettings()">Save Target</button>
             </div>
 
             <div class="settings-section">
